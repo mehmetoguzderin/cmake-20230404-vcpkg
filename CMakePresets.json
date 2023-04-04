@@ -1,0 +1,116 @@
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "clang",
+            "displayName": "Clang",
+            "description": "Clang Debug",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/out/build/clang",
+            "installDir": "${sourceDir}/out/install/clang",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "type": "FILEPATH",
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+                },
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "clangr",
+            "displayName": "ClangR",
+            "description": "Clang Release",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/out/build/clang",
+            "installDir": "${sourceDir}/out/install/clang",
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "type": "FILEPATH",
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+                },
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "msbuild",
+            "displayName": "MSBuild",
+            "description": "MSBuild Debug",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/out/build/msbuild",
+            "installDir": "${sourceDir}/out/install/msbuild",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "type": "FILEPATH",
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+                },
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_CXX_COMPILER": "cl.exe",
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "msbuildr",
+            "displayName": "MSBuildR",
+            "description": "MSBuild Release",
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/out/build/msbuild",
+            "installDir": "${sourceDir}/out/install/msbuild",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_TOOLCHAIN_FILE": {
+                    "type": "FILEPATH",
+                    "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+                },
+                "CMAKE_C_COMPILER": "cl.exe",
+                "CMAKE_CXX_COMPILER": "cl.exe",
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "clang",
+            "displayName": "Clang",
+            "description": "Clang Debug",
+            "configurePreset": "clang",
+            "configuration": "Debug"
+        },
+        {
+            "name": "clangr",
+            "displayName": "ClangR",
+            "description": "Clang Release",
+            "configurePreset": "clangr",
+            "configuration": "Release"
+        },
+        {
+            "name": "msbuild",
+            "displayName": "MSBuild",
+            "description": "MSBuild Debug",
+            "configurePreset": "msbuild",
+            "configuration": "Debug"
+        },
+        {
+            "name": "msbuildr",
+            "displayName": "MSBuildR",
+            "description": "MSBuild Release",
+            "configurePreset": "msbuildr",
+            "configuration": "Release"
+        }
+    ]
+}
