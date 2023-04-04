@@ -1,0 +1,15 @@
+if(DEFINED ENV{VCPKG_DEFAULT_TRIPLET} AND NOT DEFINED VCPKG_TARGET_TRIPLET)
+  set(VCPKG_TARGET_TRIPLET "$ENV{VCPKG_DEFAULT_TRIPLET}" CACHE STRING "vcpkg_default_triplet")
+endif()
+
+cmake_minimum_required(VERSION 3.21)
+
+project(main)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+if(NOT CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+  set(CMAKE_CXX_CLANG_TIDY "clang-tidy")
+endif()
+
+add_executable(main-app)
+set_property(TARGET main-app PROPERTY CXX_STANDARD 20)
